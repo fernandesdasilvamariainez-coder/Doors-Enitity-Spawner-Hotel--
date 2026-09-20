@@ -1,0 +1,126 @@
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
+-- Create entity
+local entity = Creator.createEntity({
+	Model = "12262883448",
+	Speed = 25,
+	DelayTime = 0,
+	HeightOffset = 0,
+	CanKill = true,
+	BreakLights = true,
+	FlickerLights = {
+		true,
+		80,
+	},
+	Cycles = {
+		Min = 1,
+		Max = 1,
+		WaitTime = 0.1,
+	},
+	CamShake = {
+		true,
+		{5, 15, 0.1, 1},
+		10,
+	},
+	Jumpscare = {
+		true, -- Enabled ('false' if you don't want jumpscare)
+		{
+			Image1 = "rbxassetid://11394027278", -- Image1 url
+			Image2 = "rbxassetid://11395249153", -- Image2 url
+			Shake = true,
+			Sound1 = {
+				10483790459, -- SoundId
+				{ Volume = 0.5 }, -- Sound properties
+			},
+			Sound2 = {
+				10483837590, -- SoundId
+				{ Volume = 0.5 }, -- Sound properties
+			},
+			Flashing = {
+				true, -- Enabled
+				Color3.fromRGB(48, 25, 52), -- Color
+			},
+			Tease = {
+				false, -- Enabled ('false' if you don't want tease)
+				Min = 1,
+				Max = 1,
+			},
+		},
+	},
+	CustomDialog = {"You died to who you call The Deer God","Closets Wont work! So try running","Its form is incomprehensible to a human upclose...","..-so avoid Eye Contact" }
+})
+local function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+local Chase = GetGitSound("https://github.com/Noonie1/goob/blob/main/Followed..mp3?raw=true","followedlong")
+Chase.Parent = workspace
+Chase.Volume = 0
+local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camera = workspace.CurrentCamera
+
+local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+	camera.CFrame = camera.CFrame * cf
+end)
+camShake:Start()
+-----[[ Advanced ]]-----
+entity.Debug.OnEntitySpawned = function(entity)
+	Chase:Play()
+	game.TweenService:Create(Chase,TweenInfo.new(5),{Volume = 1}):Play()
+	camShake:ShakeSustain(cameraShaker.Presets.Earthquake)
+end
+
+entity.Debug.OnEntityDespawned = function(entity)
+	camShake:StopSustained(5)
+	game.TweenService:Create(Chase,TweenInfo.new(10),{Volume = 0,Pitch = 0}):Play()
+	if getgenv().death == true then
+		getgenv().Title = "Last Chance To Look Away" --Title Here
+		getgenv().Description = "Why are you running?" --Description Here
+		getgenv().Reason = "Survive the rare Entity called Deer God" --Reason Here
+		getgenv().BadgeId = 2129311966  --Replace Number with Your Badge ID
+		getgenv().Category = 10 --You can replace the Category or dont
+
+		local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
+		local Achievements = debug.getupvalue(Unlock, 1)
+		for i,v in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
+			v.Title = getgenv().Title
+			v.Desc = getgenv().Description
+			v.Reason = getgenv().Reason
+			v.BadgeId = getgenv().BadgeId
+			v.Category = getgenv().Category
+		end
+		Unlock(nil,"Join")
+	end
+end
+
+entity.Debug.OnEntityStartMoving = function(entity)
+
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entity)
+
+end
+
+entity.Debug.OnDeath = function()
+    local function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end	
+    local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Repository/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","DamageNoise") JumpscareSound.Parent = workspace
+			JumpscareSound.Volume = 0.7
+			JumpscareSound:Play() 
+
+end
+---------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)

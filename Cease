@@ -1,0 +1,157 @@
+local v = game.Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camera = workspace.CurrentCamera
+local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+    camera.CFrame = camera.CFrame * cf
+end)
+
+local function MakeNormal(Light)
+    spawn(function()
+        local lightcolor = Light.Color
+        task.wait(5)
+        game.TweenService:Create(Light,TweenInfo.new(0.5),{Color = lightcolor}):Play()
+    end)
+end
+
+local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))() 
+-- Create entity
+local entity = Creator.createEntity({
+    CustomName = "Cease", -- Custom name of your entity
+    Model = "rbxassetid://12262854624", -- Can be GitHub file or rbxassetid
+    Speed = 120, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 1,
+    CanKill = false,
+    KillRange = 40,
+    BreakLights = false,
+    BackwardsMovement = false,
+    FlickerLights = {
+        false, -- Enabled/Disabled
+        2, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {1.5, 40, 0.1, 1}, -- Shake values (don't change if you don't know)
+        90, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://0", -- Image1 url
+            Image2 = "rbxassetid://0", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                103879029437685, -- SoundId
+                { Volume = 0.9 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.9 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 0, 0), -- Color
+            },
+            Tease = {
+                false, -- Enabled/Disabled
+                Min = 2,
+                Max = 4,
+            },
+        },
+    },
+    CustomDialog = {"You died to who you call Cease...", "The lights flicker blue when he is coming.", "Dont move, Try to stay still outside and inside the closet."}, -- Custom death message
+})
+
+-----[[ Advanced ]]-----
+entity.Debug.OnEntitySpawned = function(entityTable)
+    local s = workspace.Cease
+    local ambush = s:FindFirstChild("HSUR")
+    ambush.Rush.Volume = 10
+    ambush.Rush.RollOffMinDistance = 2
+    ambush.Rush.RollOffMaxDistance = 150
+    ambush.Silence:Play()
+    ambush.Rush:Play()
+    ambush.Rush.Pitch = 0.1
+    game.TweenService:Create(ambush.Rush,TweenInfo.new(6),{Volume = 0.8}):Play()
+    local redtweeninfo = TweenInfo.new(0.5)
+    local redinfo = {Color = Color3.new(0.454902, 0.529412, 1)}
+    camShake:Shake(cameraShaker.Presets.Earthquake)
+    
+    for i,v in pairs(game.Workspace.CurrentRooms:GetDescendants()) do
+        if v:IsA("Light") then
+            pcall(MakeNormal,v)
+            game.TweenService:Create(v,redtweeninfo,redinfo):Play()
+            if v.Parent.Name == "LightFixture" then
+                pcall(MakeNormal,v.Parent:FindFirstChild("Neon"))
+                pcall(function()
+                    game.TweenService:Create(v.Parent:FindFirstChild("Neon"),redtweeninfo,redinfo):Play()
+                end)
+            end
+        end
+    end
+    wait(3)
+    
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    
+    if character:GetAttribute("Hiding") == false or character:GetAttribute("Hiding") == nil then
+        local lastPosition = character:GetPivot().Position
+        local moving = false
+        
+        local movementCheck = game:GetService("RunService").Heartbeat:Connect(function()
+            local currentPosition = character:GetPivot().Position
+            if (currentPosition - lastPosition).Magnitude > 0.1 then
+                moving = true
+            end
+            lastPosition = currentPosition
+        end)
+        wait(0.2)
+        movementCheck:Disconnect()
+        if moving then
+            ReplicatedStorage.GameStats["Player_"..player.Name].Total.DeathCause.Value = "Cease"
+            firesignal(ReplicatedStorage.Bricks.DeathHint.OnClientEvent, 
+                {"You died to who you call Cease...","Its tactic is appearing after rush...","It sees through movement and can see anyone in wardrobes."},
+                "Blue")
+            humanoid.Health = 0
+        end
+    end
+end
+
+entity.Debug.OnEntityDespawned = function(entityTable)
+    local EntityInstance = game.workspace:FindFirstChild("Cease")
+    if EntityInstance then
+        EntityInstance:Destroy()
+    end
+end
+
+entity.Debug.OnEntityStartMoving = function(entityTable)
+    print("Entity has started moving:", entityTable.Model)
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityTable)
+    print("Entity has finished rebound:", entityTable.Model)
+end
+
+entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
+    print("Entity:", entityTable.Model, "has entered room:", room)
+end
+
+entity.Debug.OnLookAtEntity = function(entityTable)
+    print("Player has looked at entity:", entityTable.Model)
+end
+
+entity.Debug.OnDeath = function(entityTable)
+    warn("kill")
+end
+------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)
