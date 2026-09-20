@@ -1,0 +1,88 @@
+	local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/plamen6789/Utilities-by-Vynixius/a3077cb7d80b803e8dba127430a508d3579ea894/Doors%20Entity%20Spawner/Source.lua"))()
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Depth", -- Custom name of your entity
+    Model = "https://github.com/plamen6789/CustomDoorsMonsters/blob/e42ceeb54cecce1f89b06a9338a53ac34647055e/Depth.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 400, -- Percentage, 100 = default Rush speed
+    DelayTime = 1, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = false,
+    KillRange = 40,
+    BackwardsMovement = true,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 5,
+        WaitTime = 1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {10, 50, 0.1,1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://14629487251", -- Image1 url
+            Image2 = "rbxassetid://14629487251", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(0, 255, 255), -- Color
+            },
+            Tease = {
+                false, -- Enabled/Disabled
+                Min = 1,
+                Max = 4,
+            },
+        },
+    },
+    CustomDialog = {"You died to an entity called Depth.", "He appears immediately at the next door when the lights flicker.", "Use the same tactics you used to survive the Ambush.", "But be careful, If the lights flash, hide immediately."}, -- Custom death message
+})
+
+
+-----[[  Debug -=- Advanced  ]]-----
+entityTable.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityDespawned = function()
+    print("Entity has despawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityStartMoving = function()
+    print("Entity has started moving:", entityTable)
+end
+
+entityTable.Debug.OnEntityFinishedRebound = function()
+    print("Entity has finished rebound:", entityTable)
+end
+
+entityTable.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entityTable, "has entered room:", room)
+end
+
+entityTable.Debug.OnLookAtEntity = function()
+    print("Player has looked at entity:", entityTable)
+end
+
+entityTable.Debug.OnDeath = function()
+    warn("Player has died.")
+end
+------------------------------------
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)

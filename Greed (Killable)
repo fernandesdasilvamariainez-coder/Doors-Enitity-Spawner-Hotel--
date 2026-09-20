@@ -1,0 +1,100 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Greed", -- Custom name of your entity
+    Model = "https://github.com/plamen6789/CustomDoorsMonsters/blob/e42ceeb54cecce1f89b06a9338a53ac34647055e/Greed.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 400, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 40,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 5,
+        WaitTime = 1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {10, 50, 0.1,1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://14629487251", -- Image1 url
+            Image2 = "rbxassetid://11360443444", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(0, 190, 190), -- Color
+            },
+            Tease = {
+                false, -- Enabled/Disabled
+                Min = 1,
+                Max = 4,
+            },
+        },
+    },
+    CustomDialog = {"You died to Greed", "It appears when you collect a lot of gold.", "He hates greedy people.", "Use the same tactics as you used with Ambush, but hide quickly."}, -- Custom death message
+})
+
+
+-----[[  Debug -=- Advanced  ]]-----
+entityTable.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityDespawned = function()
+    print("Entity has despawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityStartMoving = function()
+    print("Entity has started moving:", entityTable)
+end
+
+entityTable.Debug.OnEntityFinishedRebound = function()
+    print("Entity has finished rebound:", entityTable)
+end
+
+entityTable.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entityTable, "has entered room:", room)
+end
+
+entityTable.Debug.OnLookAtEntity = function()
+    print("Player has looked at entity:", entityTable)
+end
+
+entityTable.Debug.OnDeath = function()
+    local function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end	
+    local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Repository/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","DamageNoise") JumpscareSound.Parent = workspace
+			JumpscareSound.Volume = 0.7
+			JumpscareSound:Play() 
+
+end
+------------------------------------
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
