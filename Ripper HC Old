@@ -135,7 +135,7 @@ end
 									static.SoundId = "rbxassetid://372770465"
 									static.Volume = 10
 									static.Pitch = 0.7
-									local crash = GetGitSound("https://github.com/Noonie1/RandomUtilities/blob/a/game%20crash%20sound.mp3?raw=true","ripperscare")
+									local crash = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/ripperscare.mp3?raw=true","ripperscare")
 									crash.Parent = workspace
 									crash.Volume = 3
 									crash.Pitch = 1
