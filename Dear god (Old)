@@ -57,7 +57,7 @@ local function GetGitSound(GithubSnd,SoundName)
 	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 	return sound
 end
-local Chase = GetGitSound("https://github.com/Noonie1/goob/blob/main/Followed..mp3?raw=true","followed2")
+local Chase = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/followed2.mp3?raw=true","followed2")
 Chase.Parent = workspace
 Chase.Volume = 0
 local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
