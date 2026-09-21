@@ -83,4 +83,4 @@ end
 ------------------------
 
 -- Run the created entity
-Creator.runEntity(entity).runEntity(entity)y(entity).runEntity(entity)
+Creator.runEntity(entity)
