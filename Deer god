@@ -78,9 +78,9 @@ entity.Debug.OnEntityDespawned = function(entity)
 	camShake:StopSustained(5)
 	game.TweenService:Create(Chase,TweenInfo.new(10),{Volume = 0,Pitch = 0}):Play()
 	if getgenv().death == true then
-		getgenv().Title = "Last Chance To Look Away" --Title Here
+		getgenv().Title = "Incomprehensible" --Title Here
 		getgenv().Description = "Why are you running?" --Description Here
-		getgenv().Reason = "Survive the rare Entity called Deer God" --Reason Here
+		getgenv().Reason = "Sucessfully survive Deer God" --Reason Here
 		getgenv().BadgeId = 2129311966  --Replace Number with Your Badge ID
 		getgenv().Category = 10 --You can replace the Category or dont
 
