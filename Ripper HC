@@ -240,8 +240,8 @@ end
 				game.Debris:AddItem(s,5)
 				if gotRippersBadge == false then gotRippersBadge = true 
 					getgenv().Title = "Torn Apart" --Title Here
-					getgenv().Description = "Dont leave to early.." --Description Here
-					getgenv().Reason = "Encounter Ripper." --Reason Here
+					getgenv().Description = "Shredded to Pieces" --Description Here
+					getgenv().Reason = "Sucessfully survive Ripper." --Reason Here
 					getgenv().BadgeId = 2129409220 --Replace Number with Your Badge ID
 					getgenv().Category = 10 --You can replace the Category or dont
 
