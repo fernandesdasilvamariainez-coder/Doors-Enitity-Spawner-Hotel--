@@ -1,1 +1,134 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/RDScriptsLOL/model/refs/heads/main/Hardcore-Shocker"))()
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Plr = Players.LocalPlayer
+local Character = Plr.Character or Plr.CharacterAdded:Wait()
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+local Humanoid = Character:WaitForChild("Humanoid")
+local Camera = Workspace.CurrentCamera
+
+local gone = false
+local MODEL_ID = 81809115282785
+local Model = game:GetObjects("rbxassetid://"..MODEL_ID)[1]
+Model.Parent = Workspace
+local Shocker = Model:FindFirstChildWhichIsA("BasePart") or Model:FindFirstChildWhichIsA("Model").PrimaryPart
+
+local camera = workspace.CurrentCamera
+local spawnPosition = camera.CFrame.Position + camera.CFrame.LookVector * 10
+spawnPosition = spawnPosition - Vector3.new(0, 2, 0)
+Shocker.CFrame = CFrame.new(spawnPosition)
+
+local function FadeOutNonHorrorSounds()
+    for _, sound in ipairs(Model:GetDescendants()) do
+        if sound:IsA("Sound") and sound.Name ~= "HORROR SCREAM 15" then
+            TweenService:Create(sound, TweenInfo.new(0.5, Enum.EasingStyle.Linear), {
+                Volume = 0
+            }):Play()
+        end
+    end
+end
+
+local function IsOnScreen()
+    if not Shocker or not Shocker.Parent then return false end
+    local position = Shocker:IsA("Model") and Shocker.PrimaryPart.Position or Shocker.Position
+    local _, onScreen = Camera:WorldToScreenPoint(position)
+    return onScreen
+end
+
+local function HandleDeath()
+    if gone == false then
+        FadeOutNonHorrorSounds()
+        
+        if Shocker:FindFirstChild("HORROR SCREAM 15") then
+            Shocker["HORROR SCREAM 15"]:Play()
+        end
+        
+        TweenService:Create(Shocker, TweenInfo.new(0.4, Enum.EasingStyle.Circular, Enum.EasingDirection.In), {
+            CFrame = HumanoidRootPart.CFrame
+        }):Play()
+        
+        task.wait(1)
+        Humanoid:TakeDamage(30)
+        if ReplicatedStorage:FindFirstChild("CameraShaker") then
+            local cameraShaker = require(ReplicatedStorage.CameraShaker)
+            local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+                Camera.CFrame = Camera.CFrame * cf
+            end)
+            camShake:Start()
+            camShake:Shake(cameraShaker.Presets.Explosion)
+        end
+        
+        TweenService:Create(Shocker, TweenInfo.new(1, Enum.EasingStyle.Linear), {
+            CFrame = Shocker.CFrame + Vector3.new(0, -20, 0)
+        }):Play()
+        local humanoid = Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid.Health < 1 then
+            ReplicatedStorage.GameStats["Player_"..Players.LocalPlayer.Name].Total.DeathCause.Value = "Shocker"
+            firesignal(ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, { "You died to who you call Shocker..","Dont look at it or it stuns you!"},"Blue")
+        end
+        if humanoid and humanoid.Health > 0 and not isfile("Shocker.txt") then
+            local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+                achievementGiver({
+                Title = "Shocking Experience",
+                Desc = "Look at me.",
+                Reason = "Encounter Shocker.",
+                Image = "rbxassetid://80265473527997"
+            })
+            writefile("Shocker.txt", "Look at me.")
+            end
+        
+        if die == false then
+            local humanoid = Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid and humanoid.Health > 0 and not isfile("Shocker.txt") then
+                local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+                    achievementGiver({
+                    Title = "Shocking Experience",
+                    Desc = "That Scared Me!",
+                    Reason = "Encounter Shocker.",
+                    Image = "rbxassetid://80265473527997"
+                })
+                writefile("Shocker.txt", "Look at me.")
+            end
+            
+            task.wait(3)
+            if Model and Model.Parent then
+                Model:Destroy()
+            end
+        end
+    end
+end
+
+local screenCheck = RunService.RenderStepped:Connect(function()
+    if not IsOnScreen() and Model and Model.Parent then
+        gone = true
+        FadeOutNonHorrorSounds()
+        
+        TweenService:Create(Shocker, TweenInfo.new(1, Enum.EasingStyle.Linear), {
+            CFrame = Shocker.CFrame + Vector3.new(0, -20, 0)
+        }):Play()
+        task.wait(3)
+        Model:Destroy()
+    end
+end)
+
+local checkThread = task.spawn(function()
+    task.wait(1)
+    if Model and Model.Parent and Shocker and Shocker.Parent then
+        if IsOnScreen() then
+            HandleDeath()
+        end
+    end
+end)
+
+task.delay(15, function()
+    screenCheck:Disconnect()
+    if Model and Model.Parent then
+        Model:Destroy()
+    end
+    if checkThread then
+        task.cancel(checkThread)
+    end
+end)
