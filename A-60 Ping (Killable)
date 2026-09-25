@@ -95,19 +95,7 @@ entityTable.Debug.OnLookAtEntity = function(entityTable)
 end
 
 entityTable.Debug.OnDeath = function(entityTable)
-    local function GetGitSound(GithubSnd,SoundName)
-	local url=GithubSnd
-	if not isfile(SoundName..".mp3") then
-		writefile(SoundName..".mp3", game:HttpGet(url))
-end
-	local sound=Instance.new("Sound")
-	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
-	return sound
-end	
-    local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Repository/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","DamageNoise") JumpscareSound.Parent = workspace
-			JumpscareSound.Volume = 0.7
-			JumpscareSound:Play() 
-
+    warn("Player is died")
 end
 ------------------------
 
