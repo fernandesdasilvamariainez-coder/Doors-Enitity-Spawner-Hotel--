@@ -115,7 +115,7 @@ local screenCheck = RunService.RenderStepped:Connect(function()
 end)
 
 local checkThread = task.spawn(function()
-    task.wait(1)
+    task.wait(2)
     if Model and Model.Parent and Shocker and Shocker.Parent then
         if IsOnScreen() then
             HandleDeath()
