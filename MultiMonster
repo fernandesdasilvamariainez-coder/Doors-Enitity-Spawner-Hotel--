@@ -80,7 +80,7 @@ local entity = Creator.createEntity({
 			},
 		},
 	},
-	CustomDialog = {"You died to an enitity designated as A-60", "It can Appear at any moment, a loud scream will anounce its presence", "When you hear it spawn you must stay out of its reach as soon as possible", "It knows exactly where you are so hiding in different places will not work.."}
+	CustomDialog = {"You died to an entity designated as A-60", "It can appear at any moment, a loud scream will anounce its presence", "When you hear it spawn you must stay out of its reach as soon as possible", "It knows exactly where you are, so hiding in different places will not work..."}
 })
 local spawned = true
 
@@ -176,7 +176,7 @@ entity.Debug.OnEntitySpawned = function()
 			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/asixtyScareOmg.mp3?raw=true","asixtyScareOmg") JumpscareSound.Parent = workspace
 			JumpscareSound.Volume = 6
 			JumpscareSound:Play()
-			camShake:ShakeOnce(15,15,0.1,4)
+			camShake:ShakeOnce(20,15,0.1,4)
 			local JumpscareContrast = Instance.new("ColorCorrectionEffect",game.Lighting)
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(0.5),{Brightness = 0.2,Contrast = 0.2,Saturation = -0.2,TintColor = Color3.fromRGB(255, 0, 4)}):Play()
 			spawn(function()
@@ -190,7 +190,7 @@ entity.Debug.OnEntitySpawned = function()
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-15,15)}):Play()
 			DEATHMESSAGE({"You died to an entity designated as A-60.", "He can appear at any moment, a loud scream will anounce its presence.", "When you hear he spawn you must stay out of its reach as soon as possible.", "He knows exactly where you are, so hiding in different places will not work..."},"MultiMonster")
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(10),{Brightness = 0,Contrast = 0,Saturation = 0,TintColor = Color3.fromRGB(255, 255, 255)}):Play()
-			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
+			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(150)
 			wait(0.5)
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{ImageTransparency = 1}):Play()
 			game.Debris:AddItem(monster1,1)
