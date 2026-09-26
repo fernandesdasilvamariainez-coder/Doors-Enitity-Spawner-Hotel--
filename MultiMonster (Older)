@@ -143,7 +143,7 @@ entity.Debug.OnEntitySpawned = function()
 			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/asixtyScareOld.mp3?raw=true","asixtyScareOld") JumpscareSound.Parent = workspace
 			JumpscareSound.Volume = 10
 			JumpscareSound:Play()
-			camShake:ShakeOnce(10,15,0.1,4)
+			camShake:ShakeOnce(15,15,0.1,4)
 			local JumpscareContrast = Instance.new("ColorCorrectionEffect",game.Lighting)
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(0.5),{Brightness = 0.2,Contrast = 0.2,Saturation = -0.2,TintColor = Color3.fromRGB(255, 0, 4)}):Play()
 			spawn(function()
@@ -152,12 +152,12 @@ entity.Debug.OnEntitySpawned = function()
 				end
 				game.TweenService:Create(monster1,TweenInfo.new(1),{CFrame = Camera.CFrame*CFrame.new(Vector3.new(0,-1.2,450))}):Play()
 			end)
-			wait(1.3) Jumpscaring = false
+			wait(1) Jumpscaring = false
 			Gui.JumpscareEnd.Image = monster1:FindFirstChild("Main"):FindFirstChild("Face").Texture
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-20,20)}):Play()
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(10),{Brightness = 0,Contrast = 0,Saturation = 0,TintColor = Color3.fromRGB(255, 255, 255)}):Play()
 			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(150)
-			wait(1)
+			wait(0.5)
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.6),{ImageTransparency = 1}):Play()
 			game.Debris:AddItem(monster1,1)
 
