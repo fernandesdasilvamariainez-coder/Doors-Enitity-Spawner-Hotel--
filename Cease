@@ -96,7 +96,7 @@ entity.Debug.OnEntitySpawned = function(entityTable)
             end
         end
     end
-    wait(5)
+    wait(7)
     
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
@@ -113,7 +113,7 @@ entity.Debug.OnEntitySpawned = function(entityTable)
             end
             lastPosition = currentPosition
         end)
-        wait(0.4)
+        wait(0.2)
         movementCheck:Disconnect()
         if moving then
             ReplicatedStorage.GameStats["Player_"..player.Name].Total.DeathCause.Value = "Cease"
