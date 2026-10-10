@@ -65,12 +65,13 @@ local function GetGitSound(GithubSnd,SoundName)
 	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 	return sound
 end
-	local A = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","A-60TrollSoundNotLoop") A.Parent = workspace["A-60"].RushNew
-	A.RollOffMaxDistance = 180
-	A.Volume = 10
-	A.RollOffMode = "LinearSquare"
-	A.Playing = true
-	A.Looped = true
+	local v_3 = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","A-60TrollSoundNotLoop") v_3.Parent = workspace["A-60"].RushNew
+	v_3.RollOffMaxDistance = 180
+	v_3.Volume = 10
+	v_3.RollOffMode = "LinearSquare"
+	v_3.Playing = true
+	v_3.Looped = true
+	v_3.Name = "Footsteps"
 end
 ------------------------
  
