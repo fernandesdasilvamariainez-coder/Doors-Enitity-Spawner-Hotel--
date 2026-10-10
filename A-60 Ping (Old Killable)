@@ -1,13 +1,13 @@
-	local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "A-60", -- Custom name of your entity
-    Model = "rbxassetid://134264140917010", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A-60%20Old%20Ping.txt?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 220, -- Percentage, 100 = default Rush speed
     DelayTime = 5, -- Time before starting cycles (seconds)
     HeightOffset = 0,
-    CanKill = false,
-    KillRange = 1,
+    CanKill = true,
+    KillRange = 60,
     BreakLights = true,
     BackwardsMovement = false,
     FlickerLights = {
