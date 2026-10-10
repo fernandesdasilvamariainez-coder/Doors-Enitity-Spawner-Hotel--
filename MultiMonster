@@ -1,4 +1,4 @@
-wait(0.001) local function GetGitSound(GithubSnd,SoundName)
+task.wait(0.001) local function GetGitSound(GithubSnd,SoundName)
 	local url=GithubSnd
 	if not isfile(SoundName..".mp3") then
 		writefile(SoundName..".mp3", game:HttpGet(url))
@@ -21,7 +21,7 @@ end			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamar
 	end)
 	camShake:Start()
 	camShake:ShakeOnce(10,10,0.1,5,1,1)
-wait(0.001)
+task.wait(0.001)
 function DEATHMESSAGE(message,who)
 	spawn(function()
 		for i = 1,50 do wait()
@@ -30,13 +30,13 @@ function DEATHMESSAGE(message,who)
 		end
 	end)
 end
-wait(3.5)
+task.wait(3.5)
 local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
 -- Create entity
 local entity = Creator.createEntity({
 	CustomName = "A-60", -- Custom name of your entity
 	Model = "104913874144013",
-	Speed = 350,
+	Speed = 450,
 	DelayTime = 1,
 	HeightOffset = 0.5,
 	CanKill = false,
@@ -47,8 +47,8 @@ local entity = Creator.createEntity({
 	},
 	Cycles = {
 		Min = 1,
-		Max = 4,
-		WaitTime = 0.05,
+		Max = 6,
+		WaitTime = 0,
 	},
 	CamShake = {
 		true,
@@ -174,7 +174,7 @@ entity.Debug.OnEntitySpawned = function()
 			local EntityOffset = Vector3.new(0,-1.2,-6)
 			local LerpAlpha = 0.8
 			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/asixtyScareOmg.mp3?raw=true","asixtyScareOmg") JumpscareSound.Parent = workspace
-			JumpscareSound.Volume = 6
+			JumpscareSound.Volume = 6    JumpscareSound.Name = "asixtyScareOmg"
 			JumpscareSound:Play()
 			camShake:ShakeOnce(15,15,0.1,4)
 			local JumpscareContrast = Instance.new("ColorCorrectionEffect",game.Lighting)
@@ -185,13 +185,13 @@ entity.Debug.OnEntitySpawned = function()
 				end
 				game.TweenService:Create(monster1,TweenInfo.new(1),{CFrame = Camera.CFrame*CFrame.new(Vector3.new(0,-1.2,450))}):Play()
 			end)
-			wait(0.5) Jumpscaring = false
+			task.wait(0.5) Jumpscaring = false
 			Gui.JumpscareEnd.Image = monster1:FindFirstChild("Main"):FindFirstChild("Face").Texture
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-15,15)}):Play()
-			DEATHMESSAGE({"You died to an entity designated as A-60.", "It can appear at any moment, a loud scream will anounce it's presence.", "When you hear it spawn, you must stay out of it's reach as soon as possible.", "It knows exactly where you are, so hiding in different places will not work..."},"MultiMonster")
+			DEATHMESSAGE({"You died to an entity called MultiMonster.", "He can appear at any moment; a loud scream will announce his presence.", "If you hear him spawn, get out of his reach as quickly as possible.", "Use the tactics you learned from Ambush."},"MultiMonster")
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(10),{Brightness = 0,Contrast = 0,Saturation = 0,TintColor = Color3.fromRGB(255, 255, 255)}):Play()
 			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
-			wait(0.5)
+			task.wait(0.5)
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{ImageTransparency = 1}):Play()
 			game.Debris:AddItem(monster1,1)
 
@@ -201,7 +201,7 @@ entity.Debug.OnEntitySpawned = function()
 			local script = Instance.new('Script', JumpscareEnd)
 
 			while true do
-				wait()
+				task.wait()
 				--	script.Parent.Rotation = script.Parent.Rotation + math.random(-6,6)
 				--script.Parent.Position = script.Parent.Position + UDim2.new(0,math.random(0,100),0,math.random(-150,150))
 			end
@@ -247,11 +247,11 @@ entity.Debug.OnEntitySpawned = function()
 		end
 	end
 	spawn(function()
-		while entity ~= nil do wait(0)
+		while entity ~= nil do task.wait()
 			local v = game.Players.LocalPlayer
 			if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
 
-				local c = canSeeTarget(v.Character,50) 
+				local c = canSeeTarget(v.Character,100) 
 				if c == true then 
 					print("killering")
 				end
@@ -283,7 +283,7 @@ entity.Debug.OnEntityDespawned = function(entity)
 	game.Debris:AddItem(Snd,25)
 	spawn(function()
 		while Snd.Playing do wait(5)
-			if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 0 then
+			if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 1 then
 				Snd:Destroy()
 			end
 		end
@@ -324,7 +324,7 @@ entity.Debug.OnEntityDespawned = function(entity)
 end
 
 entity.Debug.OnEntityStartMoving = function(entity)
-
+    workspace["A-60"].AmbienceSounds["Ambience_A-60_End"].Volume = 1
 end
 
 ---------------------------
