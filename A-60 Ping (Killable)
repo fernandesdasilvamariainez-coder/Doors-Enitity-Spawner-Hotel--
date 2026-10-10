@@ -1,4 +1,6 @@
-	local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
+
+
 -- Create entity
 local entityTable = Creator.createEntity({
     CustomName = "Unknown", -- Custom name of your entity
@@ -7,7 +9,7 @@ local entityTable = Creator.createEntity({
     DelayTime = 5, -- Time before starting cycles (seconds)
     HeightOffset = -1,
     CanKill = true,
-    KillRange = 70,
+    KillRange = 60,
     BreakLights = true,
     BackwardsMovement = false,
     FlickerLights = {
@@ -52,7 +54,7 @@ local entityTable = Creator.createEntity({
     CustomDialog = {}, -- Custom death message
 })
 
------[[ Advanced ]]-----
+-----[[ Advanced -=- Debug ]]-----
 entityTable.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
 end
@@ -100,4 +102,4 @@ end
 ------------------------
 
 -- Run the created entity
-Creator.runEntity(entityTable)
+Spawner.runEntity(entityTable)
