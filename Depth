@@ -1,4 +1,4 @@
-	local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/plamen6789/Utilities-by-Vynixius/a3077cb7d80b803e8dba127430a508d3579ea894/Doors%20Entity%20Spawner/Source.lua"))()
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/plamen6789/Utilities-by-Vynixius/a3077cb7d80b803e8dba127430a508d3579ea894/Doors%20Entity%20Spawner/Source.lua"))()
 -- Create entity
 local entityTable = Spawner.createEntity({
     CustomName = "Depth", -- Custom name of your entity
