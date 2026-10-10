@@ -1,4 +1,4 @@
-	local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
 -- Create entity
 local entityTable = Spawner.createEntity({
     CustomName = "Charged Terror", -- Custom name of your entity
