@@ -1,5 +1,5 @@
-	local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
--- Create entity
+local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
+-- Create Classic Ripper
 local entityTable = Creator.createEntity({
     CustomName = "Ripper", -- Custom name of your entity
     Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/RipperClassic.txt?raw=true", -- Can be GitHub file or rbxassetid
