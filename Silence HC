@@ -48,7 +48,7 @@ local entity = Creator.createEntity({
             },
         },
     },
-    CustomDialog = {"You died to Silence", "He is quiet, so he never warns when he is coming.", "Stay quiet to hear him. Hide in a closet or stay away from him."}, -- Custom death message
+    CustomDialog = {"You died to Silence", "He is slow but quiet, so he never warns when he is coming.", "Stay quiet to hear him. Hide in a closet or stay away from him."}, -- Custom death message
 })
 
 -----[[ Advanced ]]-----
