@@ -3,7 +3,7 @@ local v_1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandes
 -- LMAO - say lsplash
 local L_1_ = v_1.createEntity({
     CustomName = "A-60", -- his name
-    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A-60TrollModelNotLoop.txt?raw=true", -- archived model: rbxassetid://unknown
+    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A60Troll.txt?raw=true", -- archived model: rbxassetid://unknown
     Speed = 200, -- his speed
     DelayTime = 1.5,
     HeightOffset = -1, -- Original A-60 Height Offset you can see his height offset in kreekcraft live
@@ -71,6 +71,7 @@ end -- my pastebin is HeitorGamer9743 (same name)
 	v_2.Name = "Footsteps"
 	v_2.Looped = true
 	v_2:Play()
+	workspace["A-60"].RushNew["Repent"].Volume = 0
 end
 ------------------------
  
