@@ -302,11 +302,11 @@ entity.Debug.OnEntityDespawned = function(entity)
 		camera.CFrame = camera.CFrame * cf
 	end)
 	camShake:Start()
-	camShake:ShakeOnce(6,4,0.1,15)
+	camShake:ShakeOnce(8,4,0.1,15)
 	if getgenv().death == true then
 		getgenv().Title = "A Nostalgic Fright" --Title Here
 		getgenv().Description = "So many familiar faces!" --Description Here
-		getgenv().Reason = "Sucessfully Survive MultiMonster." --Reason Here
+		getgenv().Reason = "Sucessfully survive MultiMonster." --Reason Here
 		getgenv().BadgeId = 2129311962  --Replace Number with Your Badge ID
 		getgenv().Category = 10 --You can replace the Category or dont
 
