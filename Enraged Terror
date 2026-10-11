@@ -3,7 +3,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/ferna
 local entityTable = Spawner.createEntity({
     CustomName = "Charged Terror", -- Custom name of your entity
     Model = "rbxassetid://11443827764", -- Can be GitHub file or rbxassetid
-    Speed = 1850, -- Percentage, 100 = default Rush speed
+    Speed = 2000, -- Percentage, 100 = default Rush speed
     DelayTime = 2, -- Time before starting cycles (seconds)
     HeightOffset = 0,
     CanKill = true,
