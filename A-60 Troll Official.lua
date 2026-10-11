@@ -5,7 +5,7 @@ local L_1_ = v_1.createEntity({
     CustomName = "A-60", -- his name
     Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A60Troll.txt?raw=true", -- archived model: rbxassetid://unknown
     Speed = 200, -- his speed
-    DelayTime = 0,
+    DelayTime = 1.5,
     HeightOffset = -1, -- Original A-60 Height Offset you can see his height offset in kreekcraft live
     CanKill = true, -- obviouslly
     KillRange = 40,
