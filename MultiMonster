@@ -251,7 +251,7 @@ entity.Debug.OnEntitySpawned = function()
 			local v = game.Players.LocalPlayer
 			if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
 
-				local c = canSeeTarget(v.Character,100) 
+				local c = canSeeTarget(v.Character,110) 
 				if c == true then 
 					print("killering")
 				end
