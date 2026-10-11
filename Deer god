@@ -46,7 +46,7 @@ local entity = Creator.createEntity({
 			},
 		},
 	},
-	CustomDialog = {"You died to who you call The Deer God","Closets Wont work! So try running","Its form is incomprehensible to a human upclose...","..-so avoid Eye Contact" }
+	CustomDialog = {"You died to who you call The Deer God","Closets Wont work! So try running","Its form is incomprehensible to a human upclose so avoid Eye Contact"}
 })
 local function GetGitSound(GithubSnd,SoundName)
 	local url=GithubSnd
