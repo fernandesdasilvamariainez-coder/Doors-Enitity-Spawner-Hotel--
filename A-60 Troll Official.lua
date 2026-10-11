@@ -1,19 +1,19 @@
--- Create Spawner (Original link is deleted so i made a new link and edited some stuff)
-local v_1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
--- Create A-60 (Edited)
-local v_2 = v_1.createEntity({
-    CustomName = "A-60", -- Name
-    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A60Troll.txt?raw=true", -- Entity (the model is deleted: rbxassetid://1383293729)
-    Speed = 200, -- Speed (Original speed)
-    DelayTime = 2, -- Time before starting moving (Original time)
-    HeightOffset = -1, -- Entity off-set (Original you can see in Kreek video)
-    CanKill = true, -- Obviously he kills you (Yes)
-    KillRange = 40, -- Kill Range (Original)
-    BreakLights = false, -- A-60 don't break the fucking lights (Sorry the profanity. but he don't break lights)
+-- its time to Troll kreek lol
+local v_1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() -- Vynixu Entity Spawner deleted link
+-- LMAO - say lsplash
+local L_1_ = v_1.createEntity({
+    CustomName = "A-60", -- his name
+    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A60Troll.txt?raw=true", -- archived model: rbxassetid://unknown
+    Speed = 200, -- his speed
+    DelayTime = 0,
+    HeightOffset = -1, -- Original A-60 Height Offset you can see his height offset in kreekcraft live
+    CanKill = true, -- obviouslly
+    KillRange = 40,
+    BreakLights = true,
     BackwardsMovement = false,
     FlickerLights = {
-        false, -- Not flicker (In original)
-        1.5, -- Time (seconds)
+        false, -- he don't flicker the lights
+        1, -- Time (seconds)
     },
     Cycles = {
         Min = 1,
@@ -21,59 +21,58 @@ local v_2 = v_1.createEntity({
         WaitTime = 1,
     },
     CamShake = {
-        true, -- Camera Shake (I didn't know it was shaking the camera, you can't even tell)
-        {0.5, 10, 0.1, 1}, -- Shake values (i didn'n know)
-        90, -- Shake start distance from A-60 to you (omg)
+        true, -- you wouldn't even notice if you weren't paying attention
+        {1, 5, 0.1, 1}, -- original shake values
+        90, -- omg
     },
     Jumpscare = {
-        false, -- It dont have jumpcare
+        false, -- so, he don't have jumpcare? - no.
         {
-            Image1 = "rbxassetid://10483855823", -- Image1 id or Url
-            Image2 = "rbxassetid://10483999903", -- Image2 id or Url
-            Shake = true,
+            Image1 = "rbxassetid://0", -- Image1 url or id
+            Image2 = "rbxassetid://0", -- Image2 url or id
+            Shake = false,
             Sound1 = {
                 10483790459, -- SoundId
-                { Volume = 0.5 }, -- Sound properties
+                { Volume = 0 }, -- Sound properties
             },
             Sound2 = {
                 10483837590, -- SoundId
-                { Volume = 0.5 }, -- Sound properties
+                { Volume = 0 }, -- Sound properties
             },
             Flashing = {
-                true, -- Enabled/Disabled
-                Color3.fromRGB(255, 0, 0), -- Color
+                false, -- Enabled/Disabled
+                Color3.fromRGB(0, 0, 0), -- Color
             },
             Tease = {
-                true, -- Enabled/Disabled
-                Min = 2,
-                Max = 4,
+                false, -- Enabled/Disabled
+                Min = 0,
+                Max = 0,
             },
         },
     },
-    CustomDialog = {"You died to A-60.", "This entity is unknown.", "It has a unique sound; if you hear it, hide!"}, -- Custom death message
+    CustomDialog = {"You died to who you call A-60.", "You can only tell your presence by the sounds.", "Hide in a closet or go to an safe spot."}, -- original death message
 })
  
------[[ Advanced ]]-----
-v_2.Debug.OnEntitySpawned = function(entityTable)
--- I changed the link sound because the sound id was deleted and there isnt one and i changed completelly the A-60 debug
-local function GetGitSound(GithubSnd,SoundName)
-	local url=GithubSnd
+-----[[ debug ]]-----
+L_1_.Debug.OnEntitySpawned = function(entityTable)
+local function L_2(GithubSnd,SoundName) -- New sound because the original sound id was deleted or archived (the sound is inside the model)
+	local V_3_=GithubSnd
 	if not isfile(SoundName..".mp3") then
-		writefile(SoundName..".mp3", game:HttpGet(url))
+		writefile(SoundName..".mp3", game:HttpGet(V_3_))
 	end
-	local sound=Instance.new("Sound")
-	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
-	return sound
-end
-	local v_3 = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","A-60TrollSoundNotLoop") v_3.Parent = workspace["A-60"].RushNew
-	v_3.RollOffMaxDistance = 180
-	v_3.Volume = 10
-	v_3.RollOffMode = "LinearSquare"
-	v_3.Playing = true
-	v_3.Looped = true
-	v_3.Name = "Footsteps"
+	local l_3=Instance.new("Sound")
+	l_3.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return l_3
+end -- my pastebin is HeitorGamer9743 (same name)
+	local v_2 = L_2("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","A-60TrollSoundNotLoop") v_2.Parent = workspace["A-60"].RushNew
+	v_2.RollOffMaxDistance = 180
+	v_2.Volume = 10
+	v_2.RollOffMode = "LinearSquare"
+	v_2.Name = "Footsteps"
+	v_2.Looped = true
+	v_2:Play()
 end
 ------------------------
  
--- WTF A-60 IS HERE?? (yes)
-v_1.runEntity(v_2)
+-- kreek forgot to speak
+v_1.runEntity(L_1_)
