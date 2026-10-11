@@ -50,7 +50,7 @@ local L_1_ = v_1.createEntity({
             },
         },
     },
-    CustomDialog = {"You died to who you call A-60.", "You can only tell your presence by the sounds.", "Hide in a closet or go to an safe spot."}, -- original death message
+    CustomDialog = {"You died to who you call A-60.", "You can only tell your presence by the sounds.", "Hide in a closet or go to an safe spot."}, -- concept death message
 })
  
 -----[[ debug ]]-----
@@ -65,7 +65,7 @@ local function L_2(GithubSnd,SoundName) -- New sound because the original sound 
 	return l_3
 end -- my pastebin is HeitorGamer9743 (same name)
 	local v_2 = L_2("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundNotLoop.mp3?raw=true","A-60TrollSoundNotLoop") v_2.Parent = workspace["A-60"].RushNew
-	v_2.RollOffMaxDistance = 180
+	v_2.RollOffMaxDistance = 160
 	v_2.Volume = 10
 	v_2.RollOffMode = "LinearSquare"
 	v_2.Name = "Footsteps"
