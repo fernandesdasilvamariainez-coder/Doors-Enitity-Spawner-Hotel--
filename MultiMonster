@@ -6,9 +6,9 @@ task.wait(0.001) local function GetGitSound(GithubSnd,SoundName)
 	local sound=Instance.new("Sound")
 	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 	return sound
-end			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/MultimonsterStart.mp3?raw=true","MultiMonsterBegin") JumpscareSound.Parent = workspace
-			JumpscareSound.Volume = 6.5
-			JumpscareSound:Play()    local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
+end			local SpawnSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/MultimonsterStart.mp3?raw=true","MultiMonsterBegin") JumpscareSound.Parent = workspace
+			SpawnSound.Volume = 6.5
+			SpawnSound:Play()    local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
 	Reboundcolor.Name = "spawn"
 	Reboundcolor.TintColor = Color3.fromRGB(80, 0, 0) Reboundcolor.Saturation = 0 Reboundcolor.Contrast = 0.5
 	game.TweenService:Create(Reboundcolor,TweenInfo.new(1.5),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
