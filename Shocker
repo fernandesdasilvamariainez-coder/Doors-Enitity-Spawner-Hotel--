@@ -50,7 +50,7 @@ local function HandleDeath()
             CFrame = HumanoidRootPart.CFrame
         }):Play()
         
-        task.wait(1)
+        task.wait(0.3)
         Humanoid:TakeDamage(30)
         if ReplicatedStorage:FindFirstChild("CameraShaker") then
             local cameraShaker = require(ReplicatedStorage.CameraShaker)
@@ -73,11 +73,11 @@ local function HandleDeath()
             local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
                 achievementGiver({
                 Title = "Shocking Experience",
-                Desc = "Look at me.",
+                Desc = "That Scared Me!",
                 Reason = "Encounter Shocker.",
                 Image = "rbxassetid://80265473527997"
             })
-            writefile("Shocker.txt", "Look at me.")
+            writefile("Shocker.txt", "That Scared me!")
             end
         
         if die == false then
@@ -90,7 +90,7 @@ local function HandleDeath()
                     Reason = "Encounter Shocker.",
                     Image = "rbxassetid://80265473527997"
                 })
-                writefile("Shocker.txt", "Look at me.")
+                writefile("Shocker.txt", "Look at me! no")
             end
             
             task.wait(3)
