@@ -1,6 +1,6 @@
-local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
 -- Create entity
-local entity = Creator.createEntity({
+local entity = Spawner.createEntity({
 	Model = "12262883448",
 	Speed = 25,
 	DelayTime = 0,
@@ -59,7 +59,7 @@ local function GetGitSound(GithubSnd,SoundName)
 end
 local Chase = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/followedlong.mp3?raw=true","followedlong")
 Chase.Parent = workspace
-Chase.Volume = 0
+Chase.Volume = 1
 local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camera = workspace.CurrentCamera
 
@@ -67,16 +67,16 @@ local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
 	camera.CFrame = camera.CFrame * cf
 end)
 camShake:Start()
------[[ Advanced ]]-----
+-----[[ Avanzed ]]-----
 entity.Debug.OnEntitySpawned = function(entity)
 	Chase:Play()
-	game.TweenService:Create(Chase,TweenInfo.new(5),{Volume = 1}):Play()
+	game.TweenService:Create(Chase,TweenInfo.new(5),{Volume = 2}):Play()
 	camShake:ShakeSustain(cameraShaker.Presets.Earthquake)
 end
 
 entity.Debug.OnEntityDespawned = function(entity)
 	camShake:StopSustained(5)
-	game.TweenService:Create(Chase,TweenInfo.new(10),{Volume = 0,Pitch = 0}):Play()
+	game.TweenService:Create(Chase,TweenInfo.new(8),{Volume = 0,Pitch = 0}):Play()
 	if getgenv().death == true then
 		getgenv().Title = "Incomprehensible" --Title Here
 		getgenv().Description = "Why are you running?" --Description Here
@@ -110,5 +110,5 @@ entity.Debug.OnDeath = function()
 end
 ---------------------------
 
--- Run the created entity
-Creator.runEntity(entity)
+-- Run the created enitity
+Spawner.runEntity(entity)
