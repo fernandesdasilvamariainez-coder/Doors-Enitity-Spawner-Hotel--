@@ -1,4 +1,4 @@
-task.wait(0.001) local function GetGitSound(GithubSnd,SoundName)
+local function GetGitSound(GithubSnd,SoundName)
 	local url=GithubSnd
 	if not isfile(SoundName..".mp3") then
 		writefile(SoundName..".mp3", game:HttpGet(url))
@@ -7,10 +7,10 @@ task.wait(0.001) local function GetGitSound(GithubSnd,SoundName)
 	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 	return sound
 end	
-	local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/MultimonsterStart.mp3?raw=true","MultiMonsterBegin") JumpscareSound.Parent = workspace
+local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/MultimonsterStart.mp3?raw=true","MultiMonsterBegin") JumpscareSound.Parent = workspace
 			JumpscareSound.Volume = 6.5
 			JumpscareSound:Play()
-	local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
+local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
 	Reboundcolor.Name = "spawn"
 	Reboundcolor.TintColor = Color3.fromRGB(80, 0, 0) Reboundcolor.Saturation = 0 Reboundcolor.Contrast = 0.5
 	game.TweenService:Create(Reboundcolor,TweenInfo.new(1.5),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
@@ -32,14 +32,14 @@ function DEATHMESSAGE(message,who)
 		end
 	end)
 end
-task.wait(3.5)
-local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
+task.wait(3.3)
+local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
 	CustomName = "A-60", -- Custom name of your entity
-	Model = "104913874144013",
+	Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A-60Hardcore%20New.txt?raw=true",
 	Speed = 450,
-	DelayTime = 1,
+	DelayTime = 5,
 	HeightOffset = 0.5,
 	CanKill = false,
 	BreakLights = false,
@@ -48,13 +48,13 @@ local entity = Creator.createEntity({
 		4,
 	},
 	Cycles = {
-		Min = 1,
-		Max = 6,
+		Min = 5,
+		Max = 5,
 		WaitTime = 0,
 	},
 	CamShake = {
 		true,
-		{30, 30, 0.1, 1},
+		{20, 30, 0.1, 1},
 		90,
 	},
 	Jumpscare = {
@@ -96,11 +96,10 @@ entity.Debug.OnEntitySpawned = function()
 		local sound=Instance.new("Sound")
 		sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 		return sound
-	end
+	end    workspace["A-60"].AmbienceSounds["Ambience_A-60"].TimePosition = 0
 	local function Kill()
-		print("killering")
-		-- Gui to Lua
-		-- Version: 3.2
+		-- FAAHHH
+		-- MultiMonster is coming
 
 		-- Instances:
 
@@ -133,11 +132,10 @@ entity.Debug.OnEntitySpawned = function()
 
 		-- Scripts:
 
-
 		local function DKITLS_fake_script() -- ScreenGui.Jumpscare 
 			local script = Instance.new('LocalScript', ScreenGui)
 
-			--if not workspace:FindFirstChild("A-60") then return end
+			-- something spin my ass ouuummmmmm
 			local Gui = script.Parent
 			local Plr = game.Players.LocalPlayer
 			local Char = Plr.Character
@@ -214,7 +212,7 @@ entity.Debug.OnEntitySpawned = function()
 
 	-------------------
 
-	local A60 =   workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print("killering")
+	local A60 = workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print("killering")
 	local deb = false
 	local function canSeeTarget(target,size)
 		if deb == true then
@@ -253,7 +251,7 @@ entity.Debug.OnEntitySpawned = function()
 			local v = game.Players.LocalPlayer
 			if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
 
-				local c = canSeeTarget(v.Character,100) 
+				local c = canSeeTarget(v.Character,110) 
 				if c == true then 
 					print("killering")
 				end
@@ -285,7 +283,7 @@ entity.Debug.OnEntityDespawned = function(entity)
 	game.Debris:AddItem(Snd,25)
 	spawn(function()
 		while Snd.Playing do wait(5)
-			if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 1 then
+			if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 125 then
 				Snd:Destroy()
 			end
 		end
@@ -304,11 +302,11 @@ entity.Debug.OnEntityDespawned = function(entity)
 		camera.CFrame = camera.CFrame * cf
 	end)
 	camShake:Start()
-	camShake:ShakeOnce(6,4,0.1,15)
+	camShake:ShakeOnce(10,4,0.1,15)
 	if getgenv().death == true then
 		getgenv().Title = "A Nostalgic Fright" --Title Here
 		getgenv().Description = "So many familiar faces!" --Description Here
-		getgenv().Reason = "Sucessfully Survive MultiMonster." --Reason Here
+		getgenv().Reason = "Sucessfully survive MultiMonster." --Reason Here
 		getgenv().BadgeId = 2129311962  --Replace Number with Your Badge ID
 		getgenv().Category = 10 --You can replace the Category or dont
 
@@ -327,6 +325,10 @@ end
 
 entity.Debug.OnEntityStartMoving = function(entity)
     workspace["A-60"].AmbienceSounds["Ambience_A-60_End"].Volume = 1
+    workspace["A-60"].RushNew.BeginScreamClose:Play()
+    workspace["A-60"].RushNew.BeginScreamFar:Play()
+    workspace["A-60"].AmbienceSounds["Breathing End"].TimePosition = 30
+    getgenv().death = true
 end
 
 ---------------------------
