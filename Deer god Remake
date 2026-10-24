@@ -2,7 +2,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/ferna
 -- Create entity
 local entity = Spawner.createEntity({
 	CustomName = "Deer God",
-	Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/DeerGodRemakeNotMine.txt?raw=true", -- NEW DEER GOD/LORD MODEL WTH HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAAAAA ok i need stop with this
+	Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/DeerGodRemakeNotMine.txt?raw=true", -- NEW DEER GOD MODEL ok i need stop with this
 	Speed = 23,
 	DelayTime = 0,
 	HeightOffset = 0,
@@ -63,7 +63,7 @@ local Chase = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Ro
 Chase.Parent = workspace
 Chase.Volume = 10
 
------[[ this remake is going to be amazing aaaaaaaaaaaaaaaaaaaaa ]]-----
+-----[[ this remake is going to be amazing ]]-----
 entity.Debug.OnEntitySpawned = function(entity)
 	Chase:Play()
 	local Deer = workspace["Deer God"].RushNew
@@ -94,9 +94,9 @@ end
 
 entity.Debug.OnEntityStartMoving = function(entity)
 	wait(9)
-	Deer.Speak1:Play()
+	Deer.Speak1:Play() -- this works on other remake model
 	wait(15)
-	Deer.Speak3:Play()
+	Deer.Speak3:Play() -- too
 end
 
 entity.Debug.OnEntityFinishedRebound = function(entity)
@@ -108,5 +108,5 @@ entity.Debug.OnDeath = function()
 end
 ---------------------------
 
--- Run the DEER GOD/LORD OMG THIS IS NEW REMAKE VERSION!!!!
+-- Run the DEER GOD OMG THIS IS NEW REMAKE VERSION!!!
 Spawner.runEntity(entity)
