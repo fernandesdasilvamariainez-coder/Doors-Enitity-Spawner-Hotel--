@@ -1,0 +1,112 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
+-- Create entity
+local entity = Spawner.createEntity({
+	CustomName = "Deer God",
+	Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/DeerGodRemakeNotMine.txt?raw=true", -- NEW DEER GOD/LORD MODEL WTH HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAAAAA ok i need stop with this
+	Speed = 23,
+	DelayTime = 0,
+	HeightOffset = 0,
+	CanKill = true,
+	KillRange = 30,
+	BreakLights = true,
+	FlickerLights = {
+		true,
+		60,
+	},
+	Cycles = {
+		Min = 1,
+		Max = 1,
+		WaitTime = 0.1,
+	},
+	CamShake = {
+		true,
+		{5, 15, 0.1, 1},
+		10,
+	},
+	Jumpscare = {
+		false, -- Enabled ('false' if you don't want jumpscare)
+		{
+			Image1 = "rbxassetid://11394027278", -- Image1 url
+			Image2 = "rbxassetid://11395249153", -- Image2 url
+			Shake = true,
+			Sound1 = {
+				10483790459, -- SoundId
+				{ Volume = 0.5 }, -- Sound properties
+			},
+			Sound2 = {
+				10483837590, -- SoundId
+				{ Volume = 0.5 }, -- Sound properties
+			},
+			Flashing = {
+				true, -- Enabled
+				Color3.fromRGB(48, 25, 52), -- Color
+			},
+			Tease = {
+				false, -- Enabled ('false' if you don't want tease)
+				Min = 1,
+				Max = 1,
+			},
+		},
+	},
+	CustomDialog = {"You died to who you call The Deer God","Closets Won't work! So try running","Its form is incomprehensible to a human upclose so avoid Eye Contact."}
+})
+local function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+local Chase = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/followed2.mp3?raw=true","followed2")
+Chase.Parent = workspace
+Chase.Volume = 10
+
+-----[[ this remake is going to be amazing aaaaaaaaaaaaaaaaaaaaa ]]-----
+entity.Debug.OnEntitySpawned = function(entity)
+	Chase:Play()
+	local Deer = workspace["Deer God"].RushNew
+	game.TweenService:Create(Chase,TweenInfo.new(1),{Volume = 10}):Play()
+end
+
+entity.Debug.OnEntityDespawned = function(entity)
+	game.TweenService:Create(Chase,TweenInfo.new(5),{Volume = 0,Pitch = 0}):Play()
+	if getgenv().death == true then
+		getgenv().Title = "Incomprehensible" --Title Here
+		getgenv().Description = "Why are you running?" --Description Here
+		getgenv().Reason = "Sucessfully survive Deer God" --Reason Here
+		getgenv().BadgeId = 2129311966  --Replace Number with Your Badge ID
+		getgenv().Category = 10 --You can replace the Category or dont
+
+		local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
+		local Achievements = debug.getupvalue(Unlock, 1)
+		for i,v in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
+			v.Title = getgenv().Title
+			v.Desc = getgenv().Description
+			v.Reason = getgenv().Reason
+			v.BadgeId = getgenv().BadgeId
+			v.Category = getgenv().Category
+		end
+		Unlock(nil,"Join")
+	end
+end
+
+entity.Debug.OnEntityStartMoving = function(entity)
+	wait(9)
+	Deer.Speak1:Play()
+	wait(15)
+	Deer.Speak3:Play()
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entity)
+
+end
+
+entity.Debug.OnDeath = function()
+
+end
+---------------------------
+
+-- Run the DEER GOD/LORD OMG THIS IS NEW REMAKE VERSION!!!!
+Spawner.runEntity(entity)
