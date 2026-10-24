@@ -120,7 +120,7 @@ entity.Debug.OnEntitySpawned = function(entityTable)
             firesignal(ReplicatedStorage.Bricks.DeathHint.OnClientEvent, 
                 {"You died to who you call Cease...","Its tactic is appearing after rush...","It sees through movement and can see anyone in wardrobes."},
                 "Blue")
-            print("humanoid.Health = 0")
+            humanoid.Health = 100
         end
     end
 end
