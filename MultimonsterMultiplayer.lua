@@ -135,7 +135,7 @@ entity.Debug.OnEntitySpawned = function()
 		local function DKITLS_fake_script() -- ScreenGui.Jumpscare 
 			local script = Instance.new('LocalScript', ScreenGui)
 
-			-- something spin my ass ouuummmmmm
+			-- workspace.["A-60"].AmbienceSounds["Ambience_A-60"].TimePosition = 0
 			local Gui = script.Parent
 			local Plr = game.Players.LocalPlayer
 			local Char = Plr.Character
@@ -171,6 +171,7 @@ entity.Debug.OnEntitySpawned = function()
 					v:Destroy()
 				end 
 			end
+			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(99)
 			local EntityOffset = Vector3.new(0,-1.2,-6)
 			local LerpAlpha = 0.8
 			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/asixtyScareOmg.mp3?raw=true","asixtyScareOmg") JumpscareSound.Parent = workspace
@@ -190,7 +191,7 @@ entity.Debug.OnEntitySpawned = function()
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-15,15)}):Play()
 			DEATHMESSAGE({"You died to an entity called MultiMonster.", "He can appear at any moment; a loud scream will announce his presence.", "If you hear him spawn, get out of his reach as quickly as possible.", "Use the tactics you learned from Ambush."},"MultiMonster")
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(10),{Brightness = 0,Contrast = 0,Saturation = 0,TintColor = Color3.fromRGB(255, 255, 255)}):Play()
-			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
+			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(1)
 			task.wait(0.5)
 			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{ImageTransparency = 1}):Play()
 			game.Debris:AddItem(monster1,1)
@@ -212,7 +213,7 @@ entity.Debug.OnEntitySpawned = function()
 
 	-------------------
 
-	local A60 = workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print("killering")
+	local A60 =   workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print("killering")
 	local deb = false
 	local function canSeeTarget(target,size)
 		if deb == true then
@@ -251,7 +252,7 @@ entity.Debug.OnEntitySpawned = function()
 			local v = game.Players.LocalPlayer
 			if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
 
-				local c = canSeeTarget(v.Character,110) 
+				local c = canSeeTarget(v.Character,120) 
 				if c == true then 
 					print("killering")
 				end
