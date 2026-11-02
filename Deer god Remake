@@ -2,16 +2,16 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/ferna
 -- Create entity
 local entity = Spawner.createEntity({
 	CustomName = "Deer God",
-	Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/DeerGodRemakeNotMine.txt?raw=true", -- NEW DEER GOD MODEL ok i need stop with this
-	Speed = 23,
+	Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/DeerGodRemakeNotMine.txt?raw=true", -- NEW DEER GOD MODEL
+	Speed = 25,
 	DelayTime = 0,
-	HeightOffset = 0,
+	HeightOffset = -2,
 	CanKill = true,
-	KillRange = 30,
+	KillRange = 25,
 	BreakLights = true,
 	FlickerLights = {
 		true,
-		60,
+		50,
 	},
 	Cycles = {
 		Min = 1,
@@ -20,8 +20,8 @@ local entity = Spawner.createEntity({
 	},
 	CamShake = {
 		true,
-		{5, 15, 0.1, 1},
-		10,
+		{0.5, 15, 0.1, 1},
+		50,
 	},
 	Jumpscare = {
 		false, -- Enabled ('false' if you don't want jumpscare)
@@ -48,7 +48,7 @@ local entity = Spawner.createEntity({
 			},
 		},
 	},
-	CustomDialog = {"You died to who you call The Deer God","Closets Won't work! So try running","Its form is incomprehensible to a human upclose so avoid Eye Contact."}
+	CustomDialog = {"You died to who you call The Deer God.","It's humanoid form is incomprehensible to a human upclose so avoid Eye Contact.","Closets won't work, so... try running."}
 })
 local function GetGitSound(GithubSnd,SoundName)
 	local url=GithubSnd
@@ -61,24 +61,42 @@ local function GetGitSound(GithubSnd,SoundName)
 end
 local Chase = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/followed2.mp3?raw=true","followed2")
 Chase.Parent = workspace
-Chase.Volume = 10
+Chase.Volume = 6
 
 -----[[ this remake is going to be amazing ]]-----
 entity.Debug.OnEntitySpawned = function(entity)
-	Chase:Play()
+	Chase:Play()    getgenv().death = true
 	local Deer = workspace["Deer God"].RushNew
-	game.TweenService:Create(Chase,TweenInfo.new(1),{Volume = 10}):Play()
+	game.TweenService:Create(Chase,TweenInfo.new(1),{Volume = 6}):Play()
 end
 
 entity.Debug.OnEntityDespawned = function(entity)
 	game.TweenService:Create(Chase,TweenInfo.new(5),{Volume = 0,Pitch = 0}):Play()
+	if getgenv().death == true then
+		getgenv().Title = "Last Chance to Look Away..." --Title Here
+		getgenv().Description = "Why do you run, child?" --Description Here
+		getgenv().Reason = "Encounter and survive the Entity designated as Deer God" --Reason Here
+		getgenv().BadgeId = 2129311966  --Replace Number with Your Badge ID
+		getgenv().Category = 10 --You can replace the Category or dont
+
+		local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
+		local Achievements = debug.getupvalue(Unlock, 1)
+		for i,v in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
+			v.Title = getgenv().Title
+			v.Desc = getgenv().Description
+			v.Reason = getgenv().Reason
+			v.BadgeId = getgenv().BadgeId
+			v.Category = getgenv().Category
+		end
+		Unlock(nil,"Join")
+	end
 end
 
 entity.Debug.OnEntityStartMoving = function(entity)
-	wait(9)
-	Deer.Speak1:Play() -- this works on other remake model
-	wait(15)
-	Deer.Speak3:Play() -- too
+	wait(0.1)
+	workspace["Deer God"].RushNew.FarFootsteps.Volume = 6.5
+	wait(0.1)
+	workspace["Deer God"].RushNew.CloseFootsteps.Volume = 6.5
 end
 
 entity.Debug.OnEntityFinishedRebound = function(entity)
@@ -86,9 +104,9 @@ entity.Debug.OnEntityFinishedRebound = function(entity)
 end
 
 entity.Debug.OnDeath = function()
-
+    print("where is jumpscare?")
 end
 ---------------------------
 
--- Run the DEER GOD OMG THIS IS NEW REMAKE VERSION!!!
+-- DEER GOD OMG THIS IS NEW REMAKE VERSION!!!!
 Spawner.runEntity(entity)
