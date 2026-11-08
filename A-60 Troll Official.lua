@@ -1,8 +1,6 @@
--- its time to Troll kreek lol
 local v1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() -- Vynixu Entity Spawner deleted link
--- LMAO - say lsplash
 local L_1_ = v1.createEntity({
-    CustomName = "A-60", -- his name
+    CustomName = "A60", -- his name
     Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/A60Troll.txt?raw=true", -- archived model: rbxassetid://unknown
     Speed = 200, -- his speed
     DelayTime = 1.5,
@@ -64,16 +62,15 @@ local function L_2(GithubSnd,SoundName) -- New sound because the original sound 
 	l_3.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
 	return l_3
 end -- my pastebin is HeitorGamer9743 (same name)
-	local v_2 = L_2("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundLoop.mp3?raw=true","A-60TrollSoundLoop") v_2.Parent = workspace["A-60"].RushNew
+	local v_2 = L_2("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/A-60TrollSoundLoop.mp3?raw=true","A-60TrollSoundLoop") v_2.Parent = workspace.A60.RushNew
 	v_2.RollOffMaxDistance = 160
 	v_2.Volume = 10
 	v_2.RollOffMode = "LinearSquare"
 	v_2.Name = "Footsteps"
 	v_2.Looped = true
 	v_2:Play()
-	workspace["A-60"].RushNew["Repent"].Volume = 0
+	workspace.A60.RushNew["Repent"].Volume = 0
 end
 ------------------------
  
--- kreek forgot to speak
 v1.runEntity(L_1_)
