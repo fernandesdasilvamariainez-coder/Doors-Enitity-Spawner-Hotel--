@@ -1,10 +1,10 @@
-local C = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
--- Create entity
-local v1 = C.createEntity({
-    CustomName = "Rush", -- Custom name of your entity
-    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/Rush.txt?raw=true", -- Can be GitHub file or rbxassetid
-    Speed = 100, -- Percentage, 100 = default Rush speed
-    DelayTime = 4, -- Time before starting cycles (seconds)
+local L_1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))() 
+
+local v1 = L_1.createEntity({
+    CustomName = "Rush",
+    Model = "https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Custom-Entities/blob/main/Rush.txt?raw=true",
+    Speed = 100,
+    DelayTime = 4,
     HeightOffset = 0,
     CanKill = true,
     KillRange = 40,
@@ -58,5 +58,4 @@ v1.Debug.OnEntitySpawned = function(entityTable)
 end
 ------------------------
  
--- Run the created entity
-C.runEntity(v1)
+L_1.runEntity(v1)
